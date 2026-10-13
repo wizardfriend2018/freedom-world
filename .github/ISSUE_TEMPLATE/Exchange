@@ -1,0 +1,93 @@
+	That's a big build, and the regulatory piece will shape everything else, so I'd start there.
+
+In the U.S., a service that converts crypto to dollars and moves money to bank accounts is generally a money transmission business. That usually means FinCEN registration as a money services business, state money transmitter licenses (many states, each with its own requirements), AML and KYC programs, and OFAC sanctions screening. New York requires a separate BitLicense. Some tokens may also raise securities questions depending on how they're structured. I'm not a lawyer, so a fintech or crypto attorney should confirm this for your specific model.
+
+Many founders reduce the licensing burden by partnering with a licensed exchange or custody provider and building on top of it, rather than becoming the licensed entity themselves. That's a decision to make early, because it changes what you build.
+
+Since this also touches the Freedom World plan, I'd want to reconcile it with the baseline, which defers the token layer to phase 7 or later. Do you want to start with the regulatory and partner structure, or with a technical plan for the Got it. Building a crypto exchange inside Freedom World is a real change to the plan, so it needs a decision before any code.
+
+The v0.1 baseline you locked puts the blockchain and token layer in phase 7 or later. An exchange is a crypto feature, so right now it sits beyond the current build phases. You have two paths:
+
+1. **Keep the baseline and sequence it.** Build the exchange as phase 7 work, and use the time before then for regulatory groundwork and partner selection. This preserves the locked spec.
+2. **Amend the baseline and pull it forward.** This is a legitimate choice, but it means revising v0.1 and deciding what gets dropped or delayed in phases 1 through 6 to make room.
+
+There's also a structural question. Money transmission and exchange licensing attach to the legal entity doing the business, not to the app. Many teams run the exchange as a separate licensed entity (or a partner's licensed service) and connect it to Freedom World through the user account. That keeps the consumer platform clear of licensing obligations.
+
+Which direction do you want: keep the baseline and sequence the exchange later, or amend it and move the exchange Understood. I've noted that you're amending v0.1 to pull the exchange forward.
+
+Moving it earlier means the amendment has to answer a few things:
+
+1. **Which phase the exchange lands in.** Phase 6 (Economy) is the natural neighbor, but it could also go into Phase 5 (Business) if the exchange is mainly for businesses.
+2. **What gets pushed back.** Anything the exchange depends on, such as identity verification, account management, and the security and audit layer, probably needs to come first, or the exchange can't launch safely.
+3. **Whether it's a feature or a separate entity.** As noted before, licensing attaches to the legal entity, so a separate Freedom Exchange entity connected through the user account would keep the consumer platform clear of that burden.
+4. **Whether FDM is in or out.** The token stays frozen either way, so the amendment should say explicitly that it's excluded.
+
+I can draft the amended v0.1 section covering these points. Do you want to set the target phase first, or should I propose one and you can adjust it?   Yes. Here's a proposed placement and a draft amendment for you to edit.
+
+**Proposed placement:** Phase 6 (Economy), pulled forward to start right after Phase 4 (Community), with Phase 5 (Business) running alongside it. The exchange depends on identity, accounts, and security, which come from Phases 1 and 2, and it needs a user base that Phase 4 builds. Phase 5 is also where business accounts would use it.
+
+**Draft amendment to v0.1:**
+
+> **Amendment 1 (crypto exchange).** The Freedom Exchange is moved forward from the deferred blockchain and token layer into Phase 6 (Economy), starting after Phase 4 completes. It is a separate legal entity, connected to Freedom World through the user account rather than built into the consumer platform. Prerequisites: identity verification, account management, transaction authorization, and audit logging from Phases 1 and 2 must be complete and tested before any money movement. Launch scope is limited to a small set of established assets, with a regulatory and partner review gating each addition. Freedom Token (FDM) remains frozen and is excluded from this amendment. No token issuance, deployment, or trading is authorized by this change.
+
+**What this changes:** Phases 3 and 4 stay as they are. The main cost is that Phase 6 starts earlier, so Phase 5 may need to slip.
+
+Is Phase 6 the right target, or do you want the exchange placed somewhere **Proposal:** Pull the exchange MVP forward to start at the end of Phase 2 (Intelligence), and go live after Phase 4 (Community).
+
+| Period | Freedom World phases | Exchange track |
+|---|---|---|
+| Now through Phase 2 | 1 Foundation, 2 Intelligence | Regulatory counsel and partner research only |
+| Phase 3 | 3 Experience | Build exchange MVP: accounts, KYC, authorization, audit logging |
+| Phase 4 | 4 Community | Partner integration, compliance review, sandbox testing |
+| End of Phase 4 | Gate | Go-live only if licensing, custody, and security reviews pass |
+| Phase 5 onward | 5 Business, 6 Economy, 7 Scale | Expansion of supported assets, with each addition gated by review |
+
+**Why this placement:** The exchange needs identity, security, and audit from Phases 1 and 2 before it can move money, so it can't start earlier. Starting in Phase 3 keeps it from waiting until Phase 6. Go-live is gated at the end of Phase 4 so launch depends on passing reviews, not on a date.
+
+**Cost:** Phase 3 and 4 get heavier, and Phase 5 may slip while the exchange work runs alongside it.
+
+**Question for you:** Is the go-live gate at the end of Phase 4 the right point, or do you want it held until Phase 5 is complete?Here's the updated amendment draft:
+
+> **Amendment 1 (crypto exchange).** The Freedom Exchange is moved forward from the deferred blockchain and token layer. Its build runs during Phases 3 and 4, and go-live is gated on completion of Phase 5 (Business). The exchange is a separate legal entity, connected to Freedom World through the user account rather than built into the consumer platform. Prerequisites: identity verification, account management, transaction authorization, and audit logging from Phases 1 and 2 must be complete and tested before any money movement. Before go-live, licensing, custody, and security reviews must pass. Launch scope is limited to a small set of established assets, and each later addition requires a regulatory and partner review. Freedom Token (FDM) remains frozen and is excluded from this amendment. No token issuance, deployment, or trading is authorized by this change.
+
+**Two things to confirm before this goes into the spec:**
+
+1. **Is Phase 5 the gate, or is Phase 5 plus a set period of stable operation?** Some teams hold go-live until a phase is complete and then run a limited beta, which lowers risk without moving the date.
+2. **Who signs off on the gate?** Since you operate without dedicated finance or compliance staff, you may want outside counsel or a compliance advisor named as a required reviewer in the Understood. Ryan signs off on the gate, and an outside compliance reviewer gets added later without blocking the build. Here's the amendment with that wording:
+
+> **Amendment 1 (crypto exchange).** The Freedom Exchange is moved forward from the deferred blockchain and token layer. Its build runs during Phases 3 and 4, and go-live is gated on completion of Phase 5 (Business). The exchange is a separate legal entity, connected to Freedom World through the user account rather than built into the consumer platform. Prerequisites: identity verification, account management, transaction authorization, and audit logging from Phases 1 and 2 must be complete and tested before any money movement. Before go-live, licensing, custody, and security reviews must pass, and the go-live decision is signed off by the founder. An outside compliance reviewer may be added to this gate in the future; this is not a precondition for the build to proceed. Launch scope is limited to a small set of established assets, and each later addition requires a regulatory and partner review. Freedom Token (FDM) remains frozen and is excluded from this amendment. No token issuance, deployment, or trading is authorized by this change.
+
+One thing to keep in view: with a single sign-off, the gate depends entirely on your judgment. That's workable, but it's worth writing down the specific criteria for each review now, so the go-live decision is made against a checklist rather than on the day. I can draft that checklist if you want it.Here's a go-live checklist. Each item is a yes/no that you can answer on the day, so the decision rests on the checklist rather than memory.
+
+**Go-live checklist: Freedom Exchange**
+
+**1. Foundation (Phases 1–2)**
+- Identity verification (KYC) works end to end, including rejection and re-verification paths.
+- Account management, including login security and account recovery, is tested.
+- Transaction authorization enforces balances, limits, and permissions, with no path where AI output alone can approve a transaction.
+- Audit logging captures every transaction and authorization decision, and logs can be exported.
+
+**2. Regulatory**
+- Licensing position is confirmed in writing by counsel: which registrations and state licenses are required, and which are in hand.
+- Sanctions and AML screening is live and tested against known-bad test cases.
+- Required customer disclosures (fees, spreads, settlement times, risk) are finalized and shown before each transaction.
+
+**3. Custody and banking**
+- Custody arrangement is documented, including who holds keys and how they are secured.
+- Banking and liquidity partners are signed, with their requirements met.
+- ACH withdrawal flow is tested with real bank accounts in a sandbox.
+
+**4. Security**
+- Independent or third-party penetration test is complete, with critical and high findings resolved.
+- Key management, fraud detection, and incident response procedures are documented and rehearsed.
+- Withdrawal limits and manual hold procedures work as designed.
+
+**5. Launch readiness**
+- Asset list for launch is fixed and each asset has passed its individual review.
+- Limited beta with a capped number of users and transaction limits is planned.
+- Rollback plan exists for pausing deposits and withdrawals.
+- FDM is confirmed absent from the launch build.
+
+**Sign-off:** Ryan McCarthy, with the date and the checklist version recorded.
+
+A practical note: item 4's penetration test and item 2's counsel letter are the two that take the longest to arrange, so they're worth scheduling early in Phase 4 rather than waiting for the gate.
